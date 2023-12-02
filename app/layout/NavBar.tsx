@@ -2,7 +2,32 @@ import Link from "next/link";
 import React from "react";
 
 const NavBar = () => {
-  const menus = ["HOME", "ABOUT", "ITEMS"];
+  const menus = ["RECIPES", "CUISINS", "KICHEN TIPS"];
+
+  const recipes = [
+    "Starter",
+    "main course",
+    "break fast",
+    "lunch",
+    "Dinner",
+    "Snacks & Appetizers",
+    "Dessert",
+    "Drinks",
+    "Salads",
+    "Soups",
+  ];
+  const cuisins = [
+    "Mexican",
+    " Italian",
+    " Chinese",
+    " Indian",
+    " German",
+    " Greek",
+    " Filipino",
+    "Japanese",
+    "American",
+  ];
+
   return (
     <nav className="flex p-5 shadow-md">
       <Link href="./">Flavour Fiesta</Link>
