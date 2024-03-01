@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Next Cloundnary
+
+Cloudnary we are using for storing our images and videos
+
+## Express backend server with mongodb without typescript
+
+1.Installation of express - npm install express
+2.Installation of mongoDB - npm install mongodb
+3.Installation of mongooes - npm install mongoose
+
+## nodemon
+
+This package is used for run our server autamatically if the anything chnges in files
+npm install nodemon --save-dev (This is only required for dev env)
+
+## Typescript for node, express,mongooes
+
+npm install typescript @types/node @types/express @types/mongoose

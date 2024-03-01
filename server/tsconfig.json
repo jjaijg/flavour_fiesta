@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2017", // Node.js version compatibility
+    "module": "commonjs", // Important for Node.js compatibility
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./server", // Input directory
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enables default imports from modules with no default export
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["server/**/*"], // Specify the files to be compiled
+  "exclude": ["node_modules", "**/*.spec.ts"] // Exclude directories
+}
