@@ -1,3 +1,5 @@
+# Flavour Fiesta
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -39,6 +41,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 Cloudnary we are using for storing our images and videos
 
+Make sure to 'NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME' in your .env file to access cloudinary in the app, refer to .env.sample
+
 ## Express backend server with mongodb without typescript
 
 1.Installation of express - npm install express
@@ -52,4 +56,4 @@ npm install nodemon --save-dev (This is only required for dev env)
 
 ## Typescript for node, express,mongooes
 
-npm install typescript @types/node @types/express @types/mongoose
+npm install typescript tsx @types/node @types/express @types/mongoose
