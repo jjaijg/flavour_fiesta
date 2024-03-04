@@ -38,6 +38,10 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
+      <Link href={"/login"}>
+        <button className="pr-4">Login</button>
+      </Link>
+      <button>Sign Up</button>
     </nav>
   );
 };
