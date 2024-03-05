@@ -41,7 +41,9 @@ const NavBar = () => {
       <Link href={"/login"}>
         <button className="pr-4">Login</button>
       </Link>
-      <button>Sign Up</button>
+      <Link href={"/signup"}>
+        <button>Sign Up</button>
+      </Link>
     </nav>
   );
 };
