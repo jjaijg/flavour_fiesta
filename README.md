@@ -39,7 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Next Cloundnary
 
-Cloudnary we are using for storing our images and videos
+Cloudnary is using for storing our images and videos
 
 Make sure to 'NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME' in your .env file to access cloudinary in the app, refer to .env.sample
 
