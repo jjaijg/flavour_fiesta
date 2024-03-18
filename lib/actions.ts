@@ -8,7 +8,8 @@ interface AuthError {
 
 export async function authenticate(_currentState: unknown, formData: FormData) {
   try {
-    await signIn("credentials", formData);
+    console.log("form data", formData);
+    // await signIn("credentials", formData);
   } catch (error: any) {
     const authError = error as AuthError;
     if (authError && authError.type) {
