@@ -1,6 +1,8 @@
 // /** @type {import('next').NextConfig} */
 import type { NextAuthConfig } from "next-auth";
 
+const authUrls = ["/login", "signup"];
+
 export const authConfig = {
   pages: {
     signIn: "/login",
@@ -8,14 +10,20 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      console.log({ nextUrl });
       const isOnDashboard = nextUrl.pathname.startsWith("/home");
       if (isOnDashboard) {
         if (isLoggedIn) return true;
+        console.log("not in dashboard");
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL("/home", nextUrl));
+        const { pathname } = nextUrl;
+        if (authUrls.includes(pathname))
+          return Response.redirect(new URL("/home", nextUrl));
+
+        return true;
+        // Response.redirect(new URL(nextUrl));
       }
+      console.log("in other pages");
       return true;
     },
   },

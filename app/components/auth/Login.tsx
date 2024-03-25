@@ -6,8 +6,6 @@ import { useFormState } from "react-dom";
 const Login = () => {
   const [errorMsg, dispatch] = useFormState(authenticate, "");
 
-  console.log({ errorMsg });
-
   return (
     <div className="bg-yellow-400 dark:bg-gray-800 h-screen overflow-hidden flex items-center justify-center">
       <div className="bg-white lg:w-6/12 md:7/12 w-8/12 shadow-3xl rounded-xl">

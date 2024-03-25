@@ -1,8 +1,8 @@
-import { connect } from "@/db";
+import { connectToDb } from "@/db";
 import { NextResponse } from "next/server";
 import User from "../../../db/model/user.model";
 
-connect();
+connectToDb();
 export async function POST(req: Request) {
   try {
     const { username, email, password } = await req.json();

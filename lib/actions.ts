@@ -16,19 +16,17 @@ export async function authenticate(_currentState: unknown, formData: FormData) {
     console.log({ user });
   } catch (error: any) {
     const authError = error as AuthError;
-    console.log("authError , ", authError);
-    return "wrong";
-    // if (authError && authError.type) {
-    //   switch (authError.type) {
-    //     case "CredentialsSignin":
-    //       return "Invalid credentials.";
-    //     default:
-    //       return "Something went wrong.";
-    //   }
-    // } else {
-    //   console.log("auth error ", authError);
-    //   return "Something went wrong.";
-    // }
-    // throw authError;
+    if (authError && authError.type) {
+      switch (authError.type) {
+        case "CredentialsSignin":
+          return "Invalid credentials.";
+        default:
+          return "Something went wrong.";
+      }
+    } else {
+      console.log("auth error ", authError);
+      return "Something went wrong.";
+    }
+    throw authError;
   }
 }
