@@ -1,15 +1,18 @@
+import { connect } from "@/db";
 import { NextResponse } from "next/server";
+import User from "../../../db/model/user.model";
 
+connect();
 export async function POST(req: Request) {
   try {
-    const { userName, email, password } = await req.json();
-    console.log("Printing", {
-      name: userName,
-      email: email,
-      password: password,
-    });
+    const { username, email, password } = await req.json();
+
+    const user = new User({ username, email, password });
+    await user.save();
+
     return NextResponse.json({
       status: 201,
+      data: user,
       message: "User registered successfully",
     });
   } catch (error) {

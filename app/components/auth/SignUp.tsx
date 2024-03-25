@@ -18,7 +18,7 @@ const SignUp = () => {
       const res = await fetch("api/signup", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ userName, email, password }),
+        body: JSON.stringify({ username: userName, email, password }),
       });
       if (res.ok) {
         const form = e.target;

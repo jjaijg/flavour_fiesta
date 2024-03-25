@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavBar />
-        <HeroSection />
+        {/* <HeroSection /> */}
         <main>{children}</main>
       </body>
     </html>
