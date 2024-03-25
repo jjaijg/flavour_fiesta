@@ -13,7 +13,6 @@ export const authConfig = {
       const isOnDashboard = nextUrl.pathname.startsWith("/home");
       if (isOnDashboard) {
         if (isLoggedIn) return true;
-        console.log("not in dashboard");
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
         const { pathname } = nextUrl;
