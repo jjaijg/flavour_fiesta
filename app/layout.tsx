@@ -1,7 +1,6 @@
 import "./globals.css";
 import "next-cloudinary/dist/cld-video-player.css";
-import HeroSection from "../layout/HeroSection";
-import NavBar from "../layout/NavBar";
+import NavBar from "./layout/NavBar";
 
 export const metadata = {
   title: "Flavour Fiesta",
@@ -16,7 +15,6 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NavBar />
-        {/* <HeroSection /> */}
         <main>{children}</main>
       </body>
     </html>

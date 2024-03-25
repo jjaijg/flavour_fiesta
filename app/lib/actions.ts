@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/app/auth";
+import { signIn } from "@/app/config/auth";
 import { AuthError } from "next-auth";
 
 export const authenticate = async (prevState: any, formData: FormData) => {

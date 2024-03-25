@@ -1,8 +1,13 @@
 import { redirect } from "next/navigation";
-import { auth } from "./auth";
+import { auth } from "./config/auth";
+import HeroSection from "@/app/layout/HeroSection";
 
 export default async function HomePage() {
   const session = await auth();
   if (!session) redirect("/api/auth/signin");
-  return <main></main>;
+  return (
+    <main>
+      <HeroSection />
+    </main>
+  );
 }
