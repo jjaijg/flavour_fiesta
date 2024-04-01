@@ -1,7 +1,15 @@
+import { auth, signOut } from "@/app/auth/login/auth";
 import Link from "next/link";
 import React from "react";
 
-const NavBar = () => {
+const NavBar = async () => {
+  const session = await auth();
+
+  const handleSignOut = async () => {
+    "use server";
+    await signOut();
+  };
+
   const menus = ["RECIPES", "CUISINS", "KICHEN TIPS"];
 
   const recipes = [
@@ -38,12 +46,20 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <Link href={"/login"}>
-        <button className="pr-4">Login</button>
-      </Link>
-      <Link href={"/signup"}>
-        <button>Sign Up</button>
-      </Link>
+      {!session ? (
+        <>
+          <Link href={"/login"}>
+            <button className="pr-4">Login</button>
+          </Link>
+          <Link href={"/signup"}>
+            <button>Sign Up</button>
+          </Link>
+        </>
+      ) : (
+        <form action={handleSignOut}>
+          <button>Sign out</button>
+        </form>
+      )}
     </nav>
   );
 };

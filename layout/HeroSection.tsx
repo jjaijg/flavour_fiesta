@@ -8,7 +8,10 @@ const HeroSection: () => React.JSX.Element = () => {
       width="1920"
       height="800"
       src="pexels-mikhail-nilov-7677876_1080p_yt8ltg"
-      autoPlay="true"
+      autoPlay="always"
+      controls={false}
+      muted
+      loop
     />
   );
 };

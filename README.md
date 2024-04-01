@@ -57,3 +57,16 @@ npm install nodemon --save-dev (This is only required for dev env)
 ## Typescript for node, express,mongooes
 
 npm install typescript tsx @types/node @types/express @types/mongoose
+
+## generating the auth seceret key
+
+import { randomBytes } from 'crypto';
+
+// Function to generate a random auth secret
+const generateAuthSecret = () => {
+return randomBytes(32).toString('hex');
+};
+
+// Generate and print the auth secret
+const authSecret = generateAuthSecret();
+console.log('Generated Auth Secret:', authSecret);
