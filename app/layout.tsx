@@ -1,6 +1,6 @@
 import "./globals.css";
 import "next-cloudinary/dist/cld-video-player.css";
-import NavBar from "./layout/NavBar";
+import NavBar from "../layout/NavBar";
 
 export const metadata = {
   title: "Flavour Fiesta",

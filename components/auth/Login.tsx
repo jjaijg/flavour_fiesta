@@ -1,5 +1,5 @@
 "use client";
-import { authenticate } from "@/app/lib/actions";
+import { authenticate } from "@/db/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 

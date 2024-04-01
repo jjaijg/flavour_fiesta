@@ -1,4 +1,4 @@
-import { auth, signOut } from "@/app/config/auth";
+import { auth, signOut } from "@/app/auth/login/auth";
 import Link from "next/link";
 import React from "react";
 

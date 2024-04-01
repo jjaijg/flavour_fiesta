@@ -2,8 +2,8 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { z } from "zod";
 import bcrypt from "bcrypt";
-import User from "@/app/lib/db/model/user.model";
-import { connectToDb } from "@/app/lib/db";
+import User from "@/db/model/user.model";
+import { connectToDb } from "@/db";
 
 import { authConfig } from "./auth.config";
 
@@ -34,7 +34,7 @@ export const {
           const parsedCredentials = z
             .object({
               username: z.string(),
-              password: z.string().min(6),
+              password: z.string().min(5),
             })
             .safeParse(credentials);
 
