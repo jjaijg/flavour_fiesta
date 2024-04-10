@@ -1,7 +1,16 @@
+import { auth, signOut } from "@/app/auth/login/auth";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import logo from "@/assets/images/logo.png";
 
-const NavBar = () => {
+const NavBar = async () => {
+  const session = await auth();
+
+  const handleSignOut = async () => {
+    "use server";
+    await signOut();
+  };
+
   const menus = ["RECIPES", "CUISINS", "KICHEN TIPS"];
 
   const recipes = [
@@ -30,7 +39,10 @@ const NavBar = () => {
 
   return (
     <nav className="flex p-5 shadow-md">
-      <Link href="./">Flavour Fiesta</Link>
+      <Link href="./" className="flex gap-2">
+        <Image src={logo} width={30} height={30} alt="Picture of logo" />
+        <span>Flavour Fiesta</span>
+      </Link>
       <ul className="flex flex-1 justify-end mr-20">
         {menus.map((menu, i) => (
           <li className="px-5  " key={i}>
@@ -38,12 +50,20 @@ const NavBar = () => {
           </li>
         ))}
       </ul>
-      <Link href={"/login"}>
-        <button className="pr-4">Login</button>
-      </Link>
-      <Link href={"/signup"}>
-        <button>Sign Up</button>
-      </Link>
+      {!session ? (
+        <>
+          <Link href={"/login"}>
+            <button className="pr-4">Login</button>
+          </Link>
+          <Link href={"/signup"}>
+            <button>Sign Up</button>
+          </Link>
+        </>
+      ) : (
+        <form action={handleSignOut}>
+          <button>Sign out</button>
+        </form>
+      )}
     </nav>
   );
 };

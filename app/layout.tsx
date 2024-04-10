@@ -1,6 +1,5 @@
 import "./globals.css";
 import "next-cloudinary/dist/cld-video-player.css";
-import HeroSection from "../layout/HeroSection";
 import NavBar from "../layout/NavBar";
 
 export const metadata = {
@@ -15,9 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
-        <HeroSection />
-        <main>{children}</main>
+        <div className="overflow-auto custom-scroll">
+          <NavBar />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );

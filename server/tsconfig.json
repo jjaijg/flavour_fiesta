@@ -33,7 +33,8 @@
     "baseUrl": ".", // Base directory to resolve non-relative module names
     "paths": {
       // Specify paths for module names to be resolved to
-      "*": ["node_modules/*", "src/types/*"]
+      "*": ["node_modules/*", "src/types/*"],
+      "@/*": ["src/*"]
     }
   },
   "include": ["server/**/*"], // Include all files in the server directory for compilation

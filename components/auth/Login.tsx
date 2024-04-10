@@ -1,86 +1,71 @@
+"use client";
+import { authenticate } from "@/db/actions";
 import Link from "next/link";
+import { useFormState } from "react-dom";
+import Card from "@mui/material/Card";
+import GoogleButton from "../inputs/GoogleButton";
+import meal from "@/assets/images/meal.jpg";
+import Image from "next/image";
 
 const Login = () => {
+  const [errorMsg, dispatch] = useFormState(authenticate, "");
+
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Your email
-                </label>
+    <div className="flex items-center justify-center py-4 bg-slate-100">
+      <Card className="p-4">
+        <div className="grid grid-cols-2 gap-3">
+          <section className="h-full relative">
+            <Image
+              src={meal}
+              width={400}
+              className="h-full"
+              // layout="responsive"
+              // objectFit="contain"
+              alt="Picture of the author"
+            />
+          </section>
+          <section className="">
+            <GoogleButton />
+            <form action={dispatch} className="mt-4">
+              <div className="flex items-center text-lg mb-6 md:mb-8">
+                <svg className="absolute ml-3" viewBox="0 0 24 24" width="24">
+                  <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
+                </svg>
                 <input
-                  type="email"
-                  name="email"
+                  type="text"
                   id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required
+                  name="email"
+                  className="bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full"
+                  placeholder="Enter email id"
                 />
               </div>
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                  Password
-                </label>
+              <div className="flex items-center text-lg mb-6 md:mb-8">
+                <svg className="absolute ml-3" viewBox="0 0 24 24" width="24">
+                  <path d="m18.75 9h-.75v-3c0-3.309-2.691-6-6-6s-6 2.691-6 6v3h-.75c-1.24 0-2.25 1.009-2.25 2.25v10.5c0 1.241 1.01 2.25 2.25 2.25h13.5c1.24 0 2.25-1.009 2.25-2.25v-10.5c0-1.241-1.01-2.25-2.25-2.25zm-10.75-3c0-2.206 1.794-4 4-4s4 1.794 4 4v3h-8zm5 10.722v2.278c0 .552-.447 1-1 1s-1-.448-1-1v-2.278c-.595-.347-1-.985-1-1.722 0-1.103.897-2 2-2s2 .897 2 2c0 .737-.405 1.375-1 1.722z" />
+                </svg>
                 <input
                   type="password"
-                  name="password"
                   id="password"
-                  placeholder="••••••••"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
+                  name="password"
+                  className="bg-gray-200 rounded pl-12 py-2 md:py-4 focus:outline-none w-full"
+                  placeholder="Password"
                 />
               </div>
-              <div className="flex items-center justify-between">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="remember"
-                      className="text-gray-500 dark:text-gray-300">
-                      Remember me
-                    </label>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
-                  Forgot password?
-                </a>
-              </div>
-              <button
-                type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                Sign in
+              <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full rounded">
+                Login
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?{" "}
-                <Link href="/signup" className="underline font-medium">
-                  Sign up
-                </Link>
-              </p>
             </form>
-          </div>
+
+            <span className="ml-4 mb-4">
+              Don&apos;t have an account?
+              <Link href="/signup" className="ml-2 underline">
+                Sign up
+              </Link>
+            </span>
+          </section>
         </div>
-      </div>
-    </section>
+      </Card>
+    </div>
   );
 };
 
