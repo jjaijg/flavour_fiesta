@@ -6,7 +6,7 @@ import { AuthError } from "next-auth";
 export const authenticate = async (prevState: any, formData: FormData) => {
   try {
     await signIn("credentials", {
-      username: formData.get("username"),
+      email: formData.get("email"),
       password: formData.get("password"),
     });
   } catch (error) {

@@ -1,6 +1,7 @@
 import { auth, signOut } from "@/app/auth/login/auth";
 import Link from "next/link";
-import React from "react";
+import Image from "next/image";
+import logo from "@/assets/images/logo.png";
 
 const NavBar = async () => {
   const session = await auth();
@@ -38,7 +39,10 @@ const NavBar = async () => {
 
   return (
     <nav className="flex p-5 shadow-md">
-      <Link href="./">Flavour Fiesta</Link>
+      <Link href="./" className="flex gap-2">
+        <Image src={logo} width={30} height={30} alt="Picture of logo" />
+        <span>Flavour Fiesta</span>
+      </Link>
       <ul className="flex flex-1 justify-end mr-20">
         {menus.map((menu, i) => (
           <li className="px-5  " key={i}>

@@ -4,7 +4,7 @@ import HeroSection from "@/layout/HeroSection";
 
 export default async function HomePage() {
   const session = await auth();
-  if (!session) redirect("/api/auth/signin");
+  if (!session) redirect("/auth/signin");
   return (
     <main>
       <HeroSection />

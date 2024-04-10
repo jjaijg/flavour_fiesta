@@ -14,8 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
-        <main>{children}</main>
+        <div className="overflow-auto custom-scroll">
+          <NavBar />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );
