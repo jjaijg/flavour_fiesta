@@ -1,6 +1,7 @@
 import "./globals.css";
 import "next-cloudinary/dist/cld-video-player.css";
 import NavBar from "../layout/NavBar";
+import { NextAuthProvider } from "./Providers";
 
 export const metadata = {
   title: "Flavour Fiesta",
@@ -14,10 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="overflow-auto custom-scroll">
-          <NavBar />
-          <main>{children}</main>
-        </div>
+        <NextAuthProvider>
+          <div className="overflow-auto custom-scroll">
+            <NavBar />
+            <main>{children}</main>
+          </div>
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -1,12 +1,14 @@
-import React from "react";
+"use client";
+import { signIn } from "next-auth/react";
 
 const GoogleButton = () => {
   return (
-    <button className="flex items-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+    <button
+      className="flex items-center bg-white dark:bg-gray-900 border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 dark:text-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      onClick={() => signIn("google")}>
       <svg
         className="h-6 w-6 mr-2"
         xmlns="http://www.w3.org/2000/svg"
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
         width="800px"
         height="800px"
         viewBox="-0.5 0 48 48"
@@ -16,9 +18,9 @@ const GoogleButton = () => {
         <g
           id="Icons"
           stroke="none"
-          stroke-width="1"
+          strokeWidth="1"
           fill="none"
-          fill-rule="evenodd">
+          fillRule="evenodd">
           <g id="Color-" transform="translate(-401.000000, -860.000000)">
             <g id="Google" transform="translate(401.000000, 860.000000)">
               <path

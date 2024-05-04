@@ -31,7 +31,7 @@ export const authConfig = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-  ], // Add providers with an empty array for now
+  ],
 } satisfies NextAuthConfig;
 
 export default authConfig;

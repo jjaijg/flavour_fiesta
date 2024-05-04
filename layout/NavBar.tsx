@@ -1,4 +1,4 @@
-import { auth, signOut } from "@/app/auth/login/auth";
+import { auth, signOut } from "@/app/api/auth/login/auth";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";

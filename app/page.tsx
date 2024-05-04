@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { auth } from "./auth/login/auth";
+import { auth } from "./api/auth/login/auth";
 import HeroSection from "@/layout/HeroSection";
 
 export default async function HomePage() {
