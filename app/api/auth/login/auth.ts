@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 import User from "@/db/model/user.model";
@@ -8,7 +9,7 @@ import { authConfig } from "./auth.config";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/db";
 
-// connectToDb();
+connectToDb();
 
 async function getUser(email: string) {
   try {
@@ -27,7 +28,7 @@ export const {
   signOut,
 } = NextAuth({
   ...authConfig,
-  adapter: MongoDBAdapter(clientPromise),
+  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     Credentials({
       name: "credentials",
@@ -58,6 +59,10 @@ export const {
           return null;
         }
       },
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
   secret: process.env.AUTH_SECRET!,

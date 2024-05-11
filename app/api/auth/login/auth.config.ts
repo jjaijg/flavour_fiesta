@@ -1,6 +1,5 @@
 // /** @type {import('next').NextConfig} */
 import type { NextAuthConfig } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 
 const authUrls = ["/login", "signup"];
 
@@ -26,12 +25,7 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
+  providers: [],
 } satisfies NextAuthConfig;
 
 export default authConfig;
