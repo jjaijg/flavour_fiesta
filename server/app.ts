@@ -12,7 +12,7 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
-  const mongoDbUrl: string = process.env.MONGODB_URL as string;
+  const mongoDbUrl: string = process.env.MONGODB_URI as string;
   mongoose.connect(mongoDbUrl);
   const db = mongoose.connection;
 
