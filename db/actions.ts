@@ -1,6 +1,6 @@
 "use server";
 
-import { signIn } from "@/app/auth/login/auth";
+import { signIn } from "@/app/api/auth/login/auth";
 import { AuthError } from "next-auth";
 
 export const authenticate = async (prevState: any, formData: FormData) => {
@@ -8,6 +8,7 @@ export const authenticate = async (prevState: any, formData: FormData) => {
     await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
+      redirectTo: "/",
     });
   } catch (error) {
     if (error instanceof AuthError) {

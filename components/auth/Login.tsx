@@ -6,13 +6,23 @@ import Card from "@mui/material/Card";
 import GoogleButton from "../inputs/GoogleButton";
 import meal from "@/assets/images/meal.jpg";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [errorMsg, dispatch] = useFormState(authenticate, "");
 
+  if (session) router.replace("/");
+
+  if (status === "loading") return <h2>Loading...</h2>;
+  if (status === "authenticated") return null;
+
   return (
-    <div className="flex items-center justify-center py-4 bg-slate-100">
-      <Card className="p-4">
+    <div className="flex items-center justify-center py-4 bg-slate-50">
+      <Card>
         <div className="grid grid-cols-2 gap-3">
           <section className="h-full relative">
             <Image
@@ -24,8 +34,10 @@ const Login = () => {
               alt="Picture of the author"
             />
           </section>
-          <section className="">
-            <GoogleButton />
+          <section className="my-4 me-4 min-height">
+            <div className="grid place-items-center">
+              <GoogleButton />
+            </div>
             <form action={dispatch} className="mt-4">
               <div className="flex items-center text-lg mb-6 md:mb-8">
                 <svg className="absolute ml-3" viewBox="0 0 24 24" width="24">
@@ -56,7 +68,7 @@ const Login = () => {
               </button>
             </form>
 
-            <span className="ml-4 mb-4">
+            <span className="my-4">
               Don&apos;t have an account?
               <Link href="/signup" className="ml-2 underline">
                 Sign up

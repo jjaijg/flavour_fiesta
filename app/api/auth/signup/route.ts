@@ -1,14 +1,21 @@
 import { NextResponse } from "next/server";
-import { connectToDb } from "@/db";
-import User from "@/db/model/user.model";
+import bcrypt from "bcrypt";
+import { authConfig } from "../login/auth.config";
 
-connectToDb();
 export async function POST(req: Request) {
   try {
     const { username, email, password } = await req.json();
 
-    const user = new User({ username, email, password });
-    await user.save();
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
+    const user = await authConfig.adapter.createUser!({
+      username,
+      email,
+      password: hashPassword,
+      roles: [],
+      emailVerified: null,
+    });
 
     return NextResponse.json({
       status: 201,

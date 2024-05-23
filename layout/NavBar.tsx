@@ -1,4 +1,4 @@
-import { auth, signOut } from "@/app/auth/login/auth";
+import { auth, signOut } from "@/app/api/auth/login/auth";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
@@ -46,7 +46,7 @@ const NavBar = async () => {
       <ul className="flex flex-1 justify-end mr-20">
         {menus.map((menu, i) => (
           <li className="px-5  " key={i}>
-            <Link href="/home">{menu}</Link>
+            <Link href="/">{menu}</Link>
           </li>
         ))}
       </ul>
