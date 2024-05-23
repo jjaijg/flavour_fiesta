@@ -1,29 +1,29 @@
-import { connect, connection } from "mongoose";
+// import { connect, connection } from "mongoose";
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-export const connectToDb = async () => {
-  try {
-    connect(process.env.MONGODB_URL!);
-    // const connection = connection;
-    connection.on("connected", () => {
-      console.log("MongoDB connected successfully");
-    });
-    connection.on("error", (err) => {
-      console.log("MongoDB connection error. Error details : ", err);
-    });
-  } catch (error) {
-    console.log("Something went wrong, while connecting to DB");
-    console.error(error);
-  }
-};
+// export const connectToDb = async () => {
+//   try {
+//     connect(process.env.MONGODB_URI!);
+//     // const connection = connection;
+//     connection.on("connected", () => {
+//       console.log("MongoDB connected successfully");
+//     });
+//     connection.on("error", (err) => {
+//       console.log("MongoDB connection error. Error details : ", err);
+//     });
+//   } catch (error) {
+//     console.log("Something went wrong, while connecting to DB");
+//     console.error(error);
+//   }
+// };
 
 // This approach is taken from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 
-if (!process.env.MONGODB_URL) {
+if (!process.env.MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
 }
 
-const uri = process.env.MONGODB_URL;
+const uri = process.env.MONGODB_URI;
 const options = {
   serverApi: {
     version: ServerApiVersion.v1,

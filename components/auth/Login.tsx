@@ -6,9 +6,19 @@ import Card from "@mui/material/Card";
 import GoogleButton from "../inputs/GoogleButton";
 import meal from "@/assets/images/meal.jpg";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [errorMsg, dispatch] = useFormState(authenticate, "");
+
+  if (session) router.replace("/");
+
+  if (status === "loading") return <h2>Loading...</h2>;
+  if (status === "authenticated") return null;
 
   return (
     <div className="flex items-center justify-center py-4 bg-slate-50">

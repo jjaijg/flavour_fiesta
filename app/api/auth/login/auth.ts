@@ -3,17 +3,11 @@ import Credentials from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { z } from "zod";
 import bcrypt from "bcrypt";
-import User from "@/db/model/user.model";
-import { connectToDb } from "@/db";
 import { authConfig } from "./auth.config";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "@/db";
-
-connectToDb();
 
 async function getUser(email: string) {
   try {
-    const user = await User.findOne<TUser>({ email });
+    const user = await authConfig.adapter.getUserByEmail!(email);
     return user;
   } catch (error) {
     console.error("Failed to fetch user:", error);
@@ -28,7 +22,6 @@ export const {
   signOut,
 } = NextAuth({
   ...authConfig,
-  // adapter: MongoDBAdapter(clientPromise),
   providers: [
     Credentials({
       name: "credentials",
@@ -63,7 +56,13 @@ export const {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      profile(profile) {
+        return { ...profile, username: profile?.name };
+      },
     }),
   ],
   secret: process.env.AUTH_SECRET!,
+  session: {
+    strategy: "jwt",
+  },
 });
