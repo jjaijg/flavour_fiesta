@@ -10,12 +10,11 @@ export async function POST(req: Request) {
     const hashPassword = await bcrypt.hash(password, salt);
 
     const user = await authConfig.adapter.createUser!({
-      id: "",
-      emailVerified: null,
       username,
       email,
       password: hashPassword,
       roles: [],
+      emailVerified: null,
     });
 
     return NextResponse.json({

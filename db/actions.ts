@@ -8,6 +8,7 @@ export const authenticate = async (prevState: any, formData: FormData) => {
     await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
+      redirectTo: "/home",
     });
   } catch (error) {
     if (error instanceof AuthError) {

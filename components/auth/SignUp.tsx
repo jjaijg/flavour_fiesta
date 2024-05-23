@@ -5,8 +5,13 @@ import { useState } from "react";
 import GoogleButton from "../inputs/GoogleButton";
 import meal from "@/assets/images/meal.jpg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const SignUp = () => {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +39,11 @@ const SignUp = () => {
       console.log("registation failed:", error);
     }
   };
+
+  if (session) router.replace("/home");
+
+  if (status === "loading") return <h2>Loading...</h2>;
+  if (status === "authenticated") return null;
 
   return (
     <div className="flex items-center justify-center py-4 bg-slate-50">

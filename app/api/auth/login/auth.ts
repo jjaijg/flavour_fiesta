@@ -56,6 +56,9 @@ export const {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      profile(profile) {
+        return { ...profile, username: profile?.name };
+      },
     }),
   ],
   secret: process.env.AUTH_SECRET!,
