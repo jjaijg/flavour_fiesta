@@ -15,7 +15,7 @@ const Login = () => {
 
   const [errorMsg, dispatch] = useFormState(authenticate, "");
 
-  if (session) router.replace("/home");
+  if (session) router.replace("/");
 
   if (status === "loading") return <h2>Loading...</h2>;
   if (status === "authenticated") return null;
