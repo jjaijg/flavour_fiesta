@@ -28,6 +28,14 @@ export const authConfig = {
       }
       return true;
     },
+    jwt({ token, user }) {
+      if (user) token.user = user;
+      return token;
+    },
+    session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
   },
   providers: [],
   debug: process.env.NODE_ENV === "development",

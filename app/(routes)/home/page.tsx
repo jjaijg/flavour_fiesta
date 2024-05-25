@@ -9,7 +9,7 @@ const Home = async (props: Props) => {
 
   if (!session) redirect("/login");
 
-  return <div>{session.user?.email}</div>;
+  return <div>{session.user?.username}</div>;
 };
 
 export default Home;
