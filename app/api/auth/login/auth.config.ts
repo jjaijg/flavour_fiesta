@@ -1,4 +1,7 @@
 // /** @type {import('next').NextConfig} */
+import { Adapter } from "next-auth/adapters";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "@/db";
 import type { NextAuthConfig } from "next-auth";
 
 const authUrls = ["/login", "signup"];
@@ -7,6 +10,7 @@ export const authConfig = {
   pages: {
     signIn: "/login",
   },
+  adapter: <Adapter>MongoDBAdapter(clientPromise),
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
@@ -24,8 +28,17 @@ export const authConfig = {
       }
       return true;
     },
+    jwt({ token, user }) {
+      if (user) token.user = user;
+      return token;
+    },
+    session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
   },
   providers: [],
+  debug: process.env.NODE_ENV === "development",
 } satisfies NextAuthConfig;
 
 export default authConfig;

@@ -1,9 +1,15 @@
 import React from "react";
+import { auth } from "@/app/api/auth/login/auth";
+import { redirect } from "next/navigation";
 
 type Props = {};
 
-const Home = (props: Props) => {
-  return <div>Home</div>;
+const Home = async (props: Props) => {
+  const session = await auth();
+
+  if (!session) redirect("/login");
+
+  return <div>{session.user?.username}</div>;
 };
 
 export default Home;
