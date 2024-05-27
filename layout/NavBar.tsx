@@ -2,6 +2,7 @@ import { auth, signOut } from "@/app/api/auth/login/auth";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
+import Button from "@/components/inputs/Button";
 
 const NavBar = async () => {
   const session = await auth();
@@ -46,22 +47,22 @@ const NavBar = async () => {
       <ul className="flex flex-1 justify-end mr-20">
         {menus.map((menu, i) => (
           <li className="px-5  " key={i}>
-            <Link href="/home">{menu}</Link>
+            <Link href="/">{menu}</Link>
           </li>
         ))}
       </ul>
       {!session ? (
         <>
           <Link href={"/login"}>
-            <button className="pr-4">Login</button>
+            <Button label="Login" className="pr-4" />
           </Link>
           <Link href={"/signup"}>
-            <button>Sign Up</button>
+            <Button label="Sign Up" />
           </Link>
         </>
       ) : (
         <form action={handleSignOut}>
-          <button>Sign out</button>
+          <Button label="Sign out" />
         </form>
       )}
     </nav>
