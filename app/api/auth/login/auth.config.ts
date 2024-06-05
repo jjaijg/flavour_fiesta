@@ -1,7 +1,7 @@
 // /** @type {import('next').NextConfig} */
 import { Adapter } from "next-auth/adapters";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "@/db";
+import clientPromise from "@/database";
 import type { NextAuthConfig } from "next-auth";
 
 const authUrls = ["/login", "signup"];
