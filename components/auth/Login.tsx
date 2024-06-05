@@ -1,5 +1,5 @@
 "use client";
-import { authenticate } from "@/db/actions";
+import { authenticate } from "@/database/actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import Card from "@mui/material/Card";
