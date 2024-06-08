@@ -1,24 +1,25 @@
-"use client";
-import { authenticate } from "@/database/actions";
-import Link from "next/link";
-import { useFormState } from "react-dom";
-import Card from "@mui/material/Card";
-import GoogleButton from "../inputs/GoogleButton";
-import meal from "@/assets/images/meal.jpg";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+'use client';
+import { authenticate } from '@/database/actions';
+import Link from 'next/link';
+import { useFormState } from 'react-dom';
+import Card from '@mui/material/Card';
+import GoogleButton from '../inputs/GoogleButton';
+import meal from '@/assets/images/meal.jpg';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Button from '../inputs/Button';
 
 const Login = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [errorMsg, dispatch] = useFormState(authenticate, "");
+  const [errorMsg, dispatch] = useFormState(authenticate, '');
 
-  if (session) router.replace("/");
+  if (session) router.replace('/');
 
-  if (status === "loading") return <h2>Loading...</h2>;
-  if (status === "authenticated") return null;
+  if (status === 'loading') return <h2>Loading...</h2>;
+  if (status === 'authenticated') return null;
 
   return (
     <div className="flex items-center justify-center py-4 bg-slate-50">
@@ -63,9 +64,7 @@ const Login = () => {
                   placeholder="Password"
                 />
               </div>
-              <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full rounded">
-                Login
-              </button>
+              <Button label="login" className="w-full font-medium md:p-4" />
             </form>
 
             <span className="my-4">
