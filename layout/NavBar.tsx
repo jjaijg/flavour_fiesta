@@ -14,7 +14,7 @@ const NavBar = () => {
   //   return <p>Loading...</p>;
   // }
 
-  const menus = ['recipes', 'cuisins', 'kitchen tips', 'day plans'];
+  const menus = ['about', 'recipes', 'cuisins', 'kitchen tips', 'day plans'];
 
   const cuisins = [
     'Mexican',
