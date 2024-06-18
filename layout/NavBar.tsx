@@ -1,27 +1,29 @@
-import { auth, signOut } from '@/app/api/auth/login/auth';
+'use client';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '@/assets/images/logo.png';
 import Button from '@/components/inputs/Button';
+import { handleSignOut } from '@/utilities/serverAction';
+import { useSession } from 'next-auth/react';
 
-const NavBar = async () => {
-  const session = await auth();
+const NavBar = () => {
+  // const session = await auth();
+  const { data: session, status } = useSession();
 
-  const handleSignOut = async () => {
-    'use server';
-    await signOut();
-  };
+  // if (status === 'loading') {
+  //   return <p>Loading...</p>;
+  // }
 
-  const menus = ['recipes', 'cuisins', 'kitchen tips', 'day plans'];
+  const menus = ['about', 'recipes', 'cuisins', 'kitchen tips', 'day plans'];
 
   const cuisins = [
     'Mexican',
-    ' Italian',
-    ' Chinese',
-    ' Indian',
-    ' German',
-    ' Greek',
-    ' Filipino',
+    'Italian',
+    'Chinese',
+    'Indian',
+    'German',
+    'Greek',
+    'Filipino',
     'Japanese',
     'American',
   ];
