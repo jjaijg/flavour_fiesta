@@ -21,7 +21,7 @@
     "mongodb": "^6.5.0",
     "mongoose": "^6.12.1",
     "next": "14.0.3",
-    "next-auth": "^5.0.0-beta.15",
+    "next-auth": "^5.0.0-beta.19",
     "next-cloudinary": "^5.10.0",
     "react": "^18",
     "react-dom": "^18",

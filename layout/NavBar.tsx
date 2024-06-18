@@ -1,45 +1,35 @@
-import { auth, signOut } from "@/app/api/auth/login/auth";
-import Link from "next/link";
-import Image from "next/image";
-import logo from "@/assets/images/logo.png";
-import Button from "@/components/inputs/Button";
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import logo from '@/assets/images/logo.png';
+import Button from '@/components/inputs/Button';
+import { handleSignOut } from '@/utilities/serverAction';
+import { useSession } from 'next-auth/react';
 
-const NavBar = async () => {
-  const session = await auth();
+const NavBar = () => {
+  // const session = await auth();
+  const { data: session, status } = useSession();
 
-  const handleSignOut = async () => {
-    "use server";
-    await signOut();
-  };
+  // if (status === 'loading') {
+  //   return <p>Loading...</p>;
+  // }
 
-  const menus = ["RECIPES", "CUISINS", "KICHEN TIPS"];
+  const menus = ['about', 'recipes', 'cuisins', 'kitchen tips', 'day plans'];
 
-  const recipes = [
-    "Starter",
-    "main course",
-    "break fast",
-    "lunch",
-    "Dinner",
-    "Snacks & Appetizers",
-    "Dessert",
-    "Drinks",
-    "Salads",
-    "Soups",
-  ];
   const cuisins = [
-    "Mexican",
-    " Italian",
-    " Chinese",
-    " Indian",
-    " German",
-    " Greek",
-    " Filipino",
-    "Japanese",
-    "American",
+    'Mexican',
+    'Italian',
+    'Chinese',
+    'Indian',
+    'German',
+    'Greek',
+    'Filipino',
+    'Japanese',
+    'American',
   ];
 
   return (
-    <nav className="flex p-5 shadow-md">
+    <nav className="flex items-center justify-center p-5 shadow-md uppercase font-medium">
       <Link href="./" className="flex gap-2">
         <Image src={logo} width={30} height={30} alt="Picture of logo" />
         <span>Flavour Fiesta</span>
@@ -53,10 +43,10 @@ const NavBar = async () => {
       </ul>
       {!session ? (
         <>
-          <Link href={"/login"}>
-            <Button label="Login" className="pr-4" />
+          <Link href={'/login'}>
+            <Button label="Login" className="mr-4" />
           </Link>
-          <Link href={"/signup"}>
+          <Link href={'/signup'}>
             <Button label="Sign Up" />
           </Link>
         </>

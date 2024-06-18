@@ -1,49 +1,50 @@
-"use client";
-import Card from "@mui/material/Card";
-import Link from "next/link";
-import { useState } from "react";
-import GoogleButton from "../inputs/GoogleButton";
-import meal from "@/assets/images/meal.jpg";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+'use client';
+import Card from '@mui/material/Card';
+import Link from 'next/link';
+import { useState } from 'react';
+import GoogleButton from '../inputs/GoogleButton';
+import meal from '@/assets/images/meal.jpg';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import Button from '../inputs/Button';
 
 const SignUp = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (!userName || !email || !password) {
-      setError("All the fields are mandatory");
+      setError('All the fields are mandatory');
       return;
     }
     try {
-      const res = await fetch("api/auth/signup", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
+      const res = await fetch('api/auth/signup', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ username: userName, email, password }),
       });
       if (res.ok) {
         const form = e.target;
         form.reset();
       } else {
-        console.log("Registation failed");
+        console.log('Registation failed');
       }
     } catch (error) {
-      console.log("registation failed:", error);
+      console.log('registation failed:', error);
     }
   };
 
-  if (session) router.replace("/");
+  if (session) router.replace('/');
 
-  if (status === "loading") return <h2>Loading...</h2>;
-  if (status === "authenticated") return null;
+  if (status === 'loading') return <h2>Loading...</h2>;
+  if (status === 'authenticated') return null;
 
   return (
     <div className="flex items-center justify-center py-4 bg-slate-50">
@@ -100,9 +101,7 @@ const SignUp = () => {
                   placeholder="Password"
                 />
               </div>
-              <button className="bg-gradient-to-b from-gray-700 to-gray-900 font-medium p-2 md:p-4 text-white uppercase w-full rounded">
-                Sign up
-              </button>
+              <Button label="Sign up" className="w-full font-medium md:p-4" />
               {error && (
                 <div className="my-4 bg-red-500 pl-3 rounded shadow-lg">
                   {error}
