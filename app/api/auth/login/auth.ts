@@ -1,17 +1,17 @@
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
-import { z } from "zod";
-import bcrypt from "bcrypt";
-import { authConfig } from "./auth.config";
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
+import { z } from 'zod';
+import bcrypt from 'bcrypt';
+import { authConfig } from './auth.config';
 
 async function getUser(email: string) {
   try {
     const user = await authConfig.adapter.getUserByEmail!(email);
     return user;
   } catch (error) {
-    console.error("Failed to fetch user:", error);
-    throw new Error("Failed to fetch user.");
+    console.error('Failed to fetch user:', error);
+    throw new Error('Failed to fetch user.');
   }
 }
 
@@ -24,7 +24,7 @@ export const {
   ...authConfig,
   providers: [
     Credentials({
-      name: "credentials",
+      name: 'credentials',
       async authorize(credentials, request) {
         try {
           const parsedCredentials = z
@@ -62,8 +62,8 @@ export const {
       },
     }),
   ],
-  secret: process.env.AUTH_SECRET!,
+  secret: process.env.NEXTAUTH_SECRET!,
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
 });
