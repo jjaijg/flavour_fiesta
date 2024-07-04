@@ -9,8 +9,8 @@ const Recipes = () => {
         Recipes
       </h2>
       <div className="flex flex-wrap gap-8">
-        {arr.map(() => {
-          return <FoodImage />;
+        {arr.map((e, i) => {
+          return <FoodImage key={i} />;
         })}
       </div>
     </>
