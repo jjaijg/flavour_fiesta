@@ -10,11 +10,13 @@ const NavBar = () => {
   // const session = await auth();
   const { data: session, status } = useSession();
 
-  // if (status === 'loading') {
-  //   return <p>Loading...</p>;
-  // }
-
-  const menus = ['about', 'recipes', 'cuisins', 'kitchen tips', 'day plans'];
+  const menus = [
+    { name: 'about', path: '/about' },
+    { name: 'recipes', path: '/recipes' },
+    { name: 'cuisins', path: '/cuisins' },
+    { name: 'kitchen tips', path: '/kitchen-tips' },
+    { name: 'day plans', path: '/day-plans' },
+  ];
 
   const cuisins = [
     'Mexican',
@@ -29,15 +31,15 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-center p-5 shadow-md uppercase font-medium">
+    <nav className="flex items-center justify-center p-5 shadow-md uppercase font-medium bg-transparent">
       <Link href="./" className="flex gap-2">
         <Image src={logo} width={30} height={30} alt="Picture of logo" />
         <span>Flavour Fiesta</span>
       </Link>
       <ul className="flex flex-1 justify-end mr-20">
         {menus.map((menu, i) => (
-          <li className="px-5  " key={i}>
-            <Link href="/">{menu}</Link>
+          <li className="px-5" key={i}>
+            <Link href={menu.path}>{menu.name}</Link>
           </li>
         ))}
       </ul>
