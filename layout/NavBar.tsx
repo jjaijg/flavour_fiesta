@@ -31,7 +31,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-center p-5 shadow-md uppercase font-medium">
+    <nav className="flex items-center justify-center p-5 shadow-md uppercase font-medium bg-transparent">
       <Link href="./" className="flex gap-2">
         <Image src={logo} width={30} height={30} alt="Picture of logo" />
         <span>Flavour Fiesta</span>

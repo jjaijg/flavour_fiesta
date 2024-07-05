@@ -16,10 +16,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NextAuthProvider>
-          <div className="overflow-auto custom-scroll">
-            <NavBar />
-            <main>{children}</main>
-          </div>
+          {/* <div className="overflow-auto custom-scroll"> */}
+          <NavBar />
+          <main>{children}</main>
+          {/* </div> */}
         </NextAuthProvider>
       </body>
     </html>

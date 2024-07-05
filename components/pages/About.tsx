@@ -6,18 +6,21 @@ import logo from '@/assets/images/logo.png';
 
 const About: NextPage = () => {
   return (
-    <div className="relative min-h-screen pt-16">
-      <Image
-        src={bg}
-        className="object-cover w-full h-full"
-        alt="Picture of the author"
-        layout="fill"
-      />
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
-        <Link href="/" className="flex gap-2 mb-8">
-          <Image src={logo} width={30} height={30} alt="Picture of logo" />
+    <div className="relative min-h-screen">
+      <div className="absolute inset-0">
+        <Image
+          src={bg}
+          className="object-cover"
+          alt="Background image"
+          layout="fill"
+          //   objectFit="cover"
+        />
+      </div>
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen bg-black bg-opacity-50">
+        {/* <Link href="/" className="flex gap-2 mb-8">
+          <Image src={logo} width={30} height={30} alt="Logo" />
           <span>Flavour Fiesta</span>
-        </Link>
+        </Link> */}
         <div className="max-w-7xl mx-auto p-8 text-white">
           <header className="mb-8">
             <h1 className="text-4xl font-bold text-center">About Us</h1>
@@ -127,9 +130,9 @@ const About: NextPage = () => {
               Have questions, feedback, or collaboration inquiries? We&apos;d
               love to hear from you! Reach out to us at [Email Address] or visit
               our
-              <a href="/contact" className="text-blue-500">
+              <Link href="/contact" className="text-blue-500">
                 Contact Page
-              </a>
+              </Link>
               .
             </p>
           </section>
