@@ -35,7 +35,7 @@ const NavBar = () => {
         <Link href="/">
           <Image src={logo} width={30} height={30} alt="Logo" />
         </Link>
-        <span className="hidden md:inline">Flavour Fiesta</span>
+        <span>Flavour Fiesta</span>
       </div>
 
       {/* -------------------for desktop screen-------------------- */}

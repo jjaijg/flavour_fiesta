@@ -1,26 +1,29 @@
 import dbConnect from '@/database/db';
 import recipeCategories from '@/database/model/recipeCategories.model';
 import { NextResponse, NextRequest } from 'next/server';
+import type {
+  RecipeCategoriesResponse,
+  ErrorResponse,
+} from '../../../types/recipe-categories.types';
 
 export async function GET(): Promise<NextResponse> {
   await dbConnect();
 
   try {
     const categories = await recipeCategories.find({});
-    return NextResponse.json({
+    const response: RecipeCategoriesResponse = {
       message: 'Fetched recipe categories successfully',
       number: categories.length,
       categories,
-    });
+    };
+    return NextResponse.json(response);
   } catch (error) {
     let msg = (error as Error).message;
-    return NextResponse.json(
-      {
-        message: 'Failed to fetch categories',
-        error: msg,
-      },
-      { status: 500 }
-    );
+    const errorResponse: ErrorResponse = {
+      message: 'Failed to fetch categories',
+      error: msg,
+    };
+    return NextResponse.json(errorResponse, { status: 500 });
   }
 }
 
