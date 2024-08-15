@@ -47,7 +47,7 @@ const SignUp = () => {
   if (status === 'authenticated') return null;
 
   return (
-    <div className="flex items-center justify-center py-4 bg-slate-50">
+    <section className="flex items-center justify-center py-4 bg-slate-50">
       <Card>
         <div className="grid grid-cols-2 gap-3">
           <section className="h-full relative">
@@ -117,7 +117,7 @@ const SignUp = () => {
           </section>
         </div>
       </Card>
-    </div>
+    </section>
   );
 };
 
