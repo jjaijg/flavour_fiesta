@@ -7,7 +7,7 @@ import dbConnect from '@/database/db';
 import User from '@/database/model/user.model';
 import Role from '@/database/model/role.model';
 
-const authUrls = ['/login', 'signup'];
+const authUrls = ['/login', 'signup', '/admin/login', '/admin/signup'];
 
 export const authConfig = {
   pages: {
@@ -23,6 +23,7 @@ export const authConfig = {
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
         const { pathname } = nextUrl;
+        console.log({ pathname });
         if (authUrls.includes(pathname))
           return Response.redirect(new URL('/', nextUrl));
 
@@ -38,7 +39,6 @@ export const authConfig = {
         const userData = await User.findById(user.id);
         if (userData.roles.length === 0) {
           const userRole = await Role.findOne({ name: 'user' });
-          // userData.password = 'pass';
           userData.roles.push(userRole);
           await userData.save();
         }

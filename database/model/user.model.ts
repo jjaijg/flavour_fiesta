@@ -4,13 +4,13 @@ import bcrypt from 'bcrypt';
 const userSchema = new Schema({
   email: { type: String, required: true },
   username: { type: String, required: true },
-  password: { type: String, required: true },
+  password: { type: String, required: false },
   roles: [{ type: Schema.Types.ObjectId, ref: 'Roles' }],
 });
 
 userSchema.pre('save', async function (next) {
   // Hash password before saving user
-  if (this.isModified('password')) {
+  if (this.isModified('password') && this.password) {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
   }
